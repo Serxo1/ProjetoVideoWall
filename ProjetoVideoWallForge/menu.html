@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>VideoWall - Menu</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      margin-bottom: 40px;
+    }
+    button {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-config {
+      background: #ffc107;
+      color: #000;
+    }
+    .btn-start {
+      background: #28a745;
+      color: #fff;
+    }
+    .btn-config:hover { background: #e0a800; }
+    .btn-start:hover { background: #218838; }
+  </style>
+</head>
+<body>
+  <h1>VideoWall Electron</h1>
+  <button class="btn-config" onclick="openSetup()">Configurar Painel</button>
+  <button class="btn-start" onclick="openGrid()">Carregar Último</button>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    function openSetup() {
+      ipcRenderer.send('open-setup');
+    }
+
+    function openGrid() {
+      ipcRenderer.send('open-grid');
+    }
+  </script>
+</body>
+</html>
